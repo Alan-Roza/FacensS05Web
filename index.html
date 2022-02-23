@@ -26,12 +26,18 @@
       <div class="row">
         <div class="mb-3 col-xs-12 col-sm-12 col-md-6">
           <label for="clientName" class="form-label">Nome do cliente</label>
-          <input type="text" class="form-control" id="clientName">
+          <input placeholder="Digite o nome do cliente" type="text" class="form-control" id="clientName">
+          <div class="invalid-feedback">
+            Por favor, informe o nome do cliente.
+          </div>
         </div>
 
         <div class="mb-3 col-xs-12 col-sm-12 col-md-6">
           <label for="email" class="form-label">E-mail</label>
-          <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+          <input placeholder="Fulano@gmail.com" type="email" class="form-control" id="email" aria-describedby="emailHelp">
+          <div class="invalid-feedback">
+            Por favor, informe o e-mail do cliente.
+          </div>
         </div>
       </div>
 
@@ -39,17 +45,23 @@
         <div class="mb-3 col-xs-12 col-sm-12 col-md-6">
           <label for="menu" class="form-label">Cardápio</label>
           <select id="menu" class="form-select">
-            <option selected>Selecione um item...</option>
-            <option value="1">Macarrão com queijo - R$15,90</option>
-            <option value="2">Estrogonofe de frango - R$21,90</option>
-            <option value="3">Parmegiana - R$22,90</option>
-            <option value="4">Estrogonofe de carne - R$25,90</option>
+            <option value="0" disabled selected>Selecione um prato...</option>
+            <option value="15.90">Macarrão com queijo - R$15,90</option>
+            <option value="21.90">Estrogonofe de frango - R$21,90</option>
+            <option value="22.90">Parmegiana - R$22,90</option>
+            <option value="25.90">Estrogonofe de carne - R$25,90</option>
           </select>
+          <div class="invalid-feedback">
+            Por favor, informe um prato.
+          </div>
         </div>
 
         <div class="mb-3 col-xs-12 col-sm-12 col-md-6">
           <label for="clientAddress" class="form-label">Endereço do cliente</label>
-          <input type="text" class="form-control" id="clientAddress">
+          <input placeholder="R. Joaquim Nascimento, Jardim Azure, 112, Sorocaba-SP" type="text" class="form-control" id="clientAddress">
+          <div class="invalid-feedback">
+            Por favor, informe o endereço do cliente.
+          </div>
         </div>
       </div>
 
@@ -59,13 +71,13 @@
             <label for="plus" class="form-label">Adicionais (opcional)</label>
           </div>
           <div id="plus" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-            <input type="checkbox" class="btn-check" id="plus-1" autocomplete="off">
+            <input type="checkbox" class="btn-check" id="plus-1" value="3" autocomplete="off">
             <label class="btn btn-outline-primary" for="plus-1">Bacon - R$3,00</label>
 
-            <input type="checkbox" class="btn-check" id="plus-2" autocomplete="off">
+            <input type="checkbox" class="btn-check" value="4" id="plus-2" autocomplete="off">
             <label class="btn btn-outline-primary" for="plus-2">Cheddar - R$4,00</label>
 
-            <input type="checkbox" class="btn-check" id="plus-3" autocomplete="off">
+            <input type="checkbox" class="btn-check" value="2" id="plus-3" autocomplete="off">
             <label class="btn btn-outline-primary" for="plus-3">Mussarela - R$2,00</label>
           </div>
         </div>
@@ -74,7 +86,7 @@
           <div class="row">
             <label for="exampleInputEmail1" class="form-label">Meio de entrega</label>
           </div>
-          <div class="btn-group" role="group">
+          <div class="btn-group" role="group" id="check-group">
             <input type="radio" class="btn-check" name="delivery" id="trip" autocomplete="off" checked>
             <label class="btn btn-outline-primary" for="trip">Viagem</label>
 
@@ -85,14 +97,14 @@
       </div>
 
       <div class="row mb-5 gx-0 gy-3 justify-content-evenly">
-        <button type="button" class="btn btn-primary col-12 col-sm-3">Calcular</button>
+        <button type="button" onclick="calc()" class="btn btn-primary col-12 col-sm-3">Calcular</button>
         <button onclick="generateReceipt()" type="button" class="btn btn-primary col-12 col-sm-3">Recibo</button>
-        <button type="button" class="btn btn-primary col-12 col-sm-3">Novo Pedido</button>
+        <button type="reset" onclick="textReset()" class="btn btn-primary col-12 col-sm-3">Novo Pedido</button>
       </div>
 
       <div class="mb-3 col-12">
         <label for="total" class="form-label">Valor total:</label>
-        <input type="text" class="form-control" placeholder="Valor total do pedido" id="total" disabled>
+        <input type="text" class="form-control" placeholder="Valor total do pedido" id="total-receipt" disabled autocomplete="off">
       </div>
 
       <div class="col-12 mb-3">
