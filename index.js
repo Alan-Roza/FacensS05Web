@@ -60,8 +60,9 @@ function generateReceipt() {
   \t${isTrip ? 'Para viagem' : 'Refeição no local'}
   \nTotal: ${calc()}
   `
-
-  document.querySelector('#receipt').innerHTML = receipt
+  if (name && email && clientAddress && menuOption && menuOption !== 'Selecione um prato...') {
+    document.querySelector('#receipt').innerHTML = receipt
+  }
 }
 
 function calc() {
